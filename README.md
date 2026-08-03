@@ -2,6 +2,16 @@
 
 This repository contains a compact Python implementation of scenario reduction for three-dimensional scenarios. The workflow reads a CSV file of scenarios with probabilities, reduces the set to a smaller representative subset, and saves the results in an output folder.
 
+# Scenario reduction objective
+
+For each scenario $s_i$ with probability $p_i$, the reduction method keeps a subset of scenarios that minimizes the expected distance to the nearest retained scenario:
+
+$$
+\min_{\mathcal{R}} \sum_{i=1}^{N} p_i \, \min_{s_j \in \mathcal{R}} \|s_i - s_j\|
+$$
+
+where $\mathcal{R}$ is the set of retained scenarios and $\|\cdot\|$ denotes the Euclidean norm.
+
 ## Files
 
 - scenario_reduction.py: main script for loading input, reducing scenarios, and writing outputs.
